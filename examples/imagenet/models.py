@@ -97,7 +97,7 @@ class ResNet(nn.Module):
 #                    momentum=0.9,
 #                    epsilon=1e-5,
 #                    dtype=self.dtype)
-    norm = nn.BatchNorm
+    norm = nn.GroupNorm
 
     x = conv(self.num_filters, (7, 7), (2, 2),
              padding=[(3, 3), (3, 3)],
