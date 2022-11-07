@@ -92,11 +92,12 @@ class ResNet(nn.Module):
   @nn.compact
   def __call__(self, x, train: bool = True):
     conv = partial(self.conv, use_bias=False, dtype=self.dtype)
-    norm = partial(nn.BatchNorm,
-                   use_running_average=not train,
-                   momentum=0.9,
-                   epsilon=1e-5,
-                   dtype=self.dtype)
+#     norm = partial(nn.BatchNorm,
+#                    use_running_average=not train,
+#                    momentum=0.9,
+#                    epsilon=1e-5,
+#                    dtype=self.dtype)
+    norm = nn.BatchNorm
 
     x = conv(self.num_filters, (7, 7), (2, 2),
              padding=[(3, 3), (3, 3)],
